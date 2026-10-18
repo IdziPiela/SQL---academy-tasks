@@ -1,0 +1,9 @@
+SELECT Rooms.home_type, Rooms.address, COALESCE(SUM (Reservations.total), 0) AS 'total_fee', COALESCE(SUM(Reservations.total/Reservations.price), 0) AS 'days'
+FROM Rooms
+LEFT JOIN Reservations 
+    ON Rooms.id=Reservations.room_id
+WHERE Rooms.has_tv=1 
+    AND  Rooms.has_internet=1 
+    AND Rooms.has_kitchen=1 
+    AND Rooms.has_air_con =1
+GROUP BY Rooms.id
