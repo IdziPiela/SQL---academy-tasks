@@ -1,0 +1,10 @@
+SELECT 
+    COUNT(Rooms.id) AS 'count', 
+CASE
+    WHEN Rooms.price <= 100 THEN 'economy'
+    WHEN Rooms.price BETWEEN 101 AND 199 THEN 'comfort'
+    WHEN Rooms.price >= 200 THEN 'premium'
+  ELSE 'default_result'
+END AS category
+FROM Rooms
+GROUP BY category
