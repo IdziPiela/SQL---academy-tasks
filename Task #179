@@ -1,0 +1,7 @@
+SELECT properties.city, SUM(bookings.total_price) as 	total_revenue
+FROM bookings
+JOIN properties
+    ON bookings.property_id=properties.property_id
+WHERE bookings.status='completed'
+GROUP BY properties.city
+ORDER BY total_revenue DESC 
